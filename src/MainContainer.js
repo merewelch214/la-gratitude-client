@@ -1,5 +1,8 @@
 import React from 'react';
-import Header from './Header'
+import Header from './Header';
+import JournalContainer from './JournalContainer';
+// import DashboardContainer from './DashboardContainer'
+// import SettingsContainer from './SettingsContainer'
 
 class MainContainer extends React.Component {
     render() {
@@ -7,7 +10,9 @@ class MainContainer extends React.Component {
             <div className='main-conatiner'>
                 < Header />
                 <div className='body-container'>
-                    <p> this is where the content will go</p>
+                    < JournalContainer />
+                    {/* < DashboardContainer />
+                    < SettingsContainer /> */}
                 </div>
             </div>
         )

@@ -63,8 +63,11 @@ nav ul li {
   border-left: 3px solid black;
   padding: 20px;
   font-size: 16px;
+  font-family: 'Oxygen-Light';
 }
 
-.App-link {
-  color: pink;
+.journal {
+  display: flex;
+  flex-direction: row;
 }
+
