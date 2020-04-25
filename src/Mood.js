@@ -1,14 +1,14 @@
 import React from 'react';
-import { FaBeer } from 'react-icons/fa';
-
+// import { FaBeer } from 'react-icons/fa';
 
 function Mood() {
     return (
         <React.Fragment>
         <h1 className="title">Mood</h1>
             <div className="container">
+                {/* < FaBeer /> */}
                 <button>
-                    < FaBeer />
+                    Ecstatic
                 </button>
                 <button>
                     Happy

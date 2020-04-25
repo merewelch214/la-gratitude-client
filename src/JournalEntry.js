@@ -6,19 +6,39 @@ class JournalEntry extends React.Component {
     entry: ''
   }
 
-  handleSubmit = () => {}
+  handleSubmit = (e) => {
+    e.preventDefault()
+    
+    // fetch(`http://localhost:3000/journal_entry`, {
+    //   method: 'POST',
+    //   headers: {
+    //     'Accept': 'application/json',
+    //     'Content-type': 'application/json'
+    //   },
+    //   body: JSON.stringify(this.state)
+    // })
 
-  handleChange = () => {}
+    this.setState({ entry: '' })
+  }
+
+  handleChange = (e) => {
+    this.setState({ [e.target.name]: e.target.value})
+  }
 
   render() {  
+    
+    const today = new Date();
+    
     return (
         <div>
-          <h1 className="title">Journal Title</h1>
+          <h1 className="title">{`${today} Journal`}</h1>
           <div className="container">
-              {/* <form onSubmit={this.handleSubmit}> 
-                <input type="text-area" name="entry" value={this.state.entry} onChange={this.handleChange} />
-                <input type="submit">Submit</input>
-              </form> */}
+              <form onSubmit={this.handleSubmit}>
+                <label name='entry'/>
+                <textarea id='entry-input' name='entry' value={this.state.entry} onChange={this.handleChange} placeholder="What are your wildest dreams?"/><br />
+                <button type="submit" value="Submit">Submit</button>
+                <button type="reset">Clear</button>
+              </form>
           </div>
         </div> 
       );
