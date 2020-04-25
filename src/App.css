@@ -31,6 +31,7 @@ body {
   color: black;
   border: 3px solid black;
   padding-left: 1rem;
+  z-index: 1;
 }
 
 .branding h1 {
@@ -71,3 +72,31 @@ nav ul li {
   flex-direction: row;
 }
 
+.left-side {
+  flex: 2
+}
+
+.right-side{
+  flex: 4
+}
+
+.container {
+  margin: 30px 15px;
+  padding: 30px;
+  border: black solid 3px;
+  font-family: 'Oxygen-Light';
+  font-size: 16px;
+  z-index: 1;
+}
+
+.title {
+  font-family: 'Oxygen-Light';
+  font-size: 20px;
+  border: black solid 3px;
+  margin: 25px 0px -50px 20px;
+  padding: 5px 0px 5px 15px;
+  width: 40%;
+  background-color: black;
+  z-index: 2;
+  color: white;
+}

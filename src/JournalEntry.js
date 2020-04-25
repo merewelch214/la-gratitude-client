@@ -1,11 +1,28 @@
 import React from 'react';
 
-function JournalEntry() {
+class JournalEntry extends React.Component {
+  
+  state = {
+    entry: ''
+  }
+
+  handleSubmit = () => {}
+
+  handleChange = () => {}
+
+  render() {  
     return (
-      <div className="journal-entry">
-          <p> This is where the journal entry will go</p>
-      </div>
-    );
+        <div>
+          <h1 className="title">Journal Title</h1>
+          <div className="container">
+              {/* <form onSubmit={this.handleSubmit}> 
+                <input type="text-area" name="entry" value={this.state.entry} onChange={this.handleChange} />
+                <input type="submit">Submit</input>
+              </form> */}
+          </div>
+        </div> 
+      );
+    }
   }
   
   export default JournalEntry;
