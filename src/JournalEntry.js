@@ -1,5 +1,5 @@
 import React from 'react';
-
+import moment from 'moment';
 class JournalEntry extends React.Component {
   
   state = {
@@ -31,7 +31,7 @@ class JournalEntry extends React.Component {
     
     return (
         <div>
-          <h1 className="title">{`${today} Journal`}</h1>
+          <h1 className="title">{`${moment(today).format('ll')} Journal`}</h1>
           <div className="container">
               <form onSubmit={this.handleSubmit}>
                 <label name='entry'/>

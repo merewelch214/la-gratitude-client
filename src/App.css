@@ -125,3 +125,8 @@ button:hover,select {
   background: black;
   color: white
 }
+
+.mood-icon {
+  padding: 5px; 
+  border: none;
+}

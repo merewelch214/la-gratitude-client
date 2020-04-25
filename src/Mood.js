@@ -1,26 +1,26 @@
 import React from 'react';
-// import { FaBeer } from 'react-icons/fa';
+import { FaSmile, FaGrinBeam, FaFrown, FaFrownOpen, FaMeh} from 'react-icons/fa';
 
 function Mood() {
     return (
         <React.Fragment>
         <h1 className="title">Mood</h1>
             <div className="container">
-                {/* < FaBeer /> */}
-                <button>
-                    Ecstatic
+                
+                <button className='mood-icon'>
+                    < FaGrinBeam size={50}/>
                 </button>
-                <button>
-                    Happy
+                <button className='mood-icon'>
+                    < FaSmile size={50} />
                 </button>
-                <button>
-                    Neutral
+                <button className='mood-icon'>
+                    < FaMeh  size={50}/>
                 </button>
-                <button>
-                    Sad
+                <button className='mood-icon'>
+                    < FaFrown size={50} />
                 </button>
-                <button>
-                    Despondent
+                <button className='mood-icon'>
+                    < FaFrownOpen size={50} />
                 </button>
             </div>
         </React.Fragment>
