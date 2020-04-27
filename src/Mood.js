@@ -18,7 +18,7 @@ class Mood extends React.Component {
     render() {
         return (
             <React.Fragment>
-            <h1 className="title">Today I feel</h1>
+            <h1 className="title">Today I feel {this.state.feeling} </h1>
                 <div className="container">
                     
                     <button onClick={this.updateMood}

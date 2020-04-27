@@ -7,9 +7,9 @@ class JournalEntry extends React.Component {
     user_id: 1
   }
 
+  // save journal entry to user data and reset the form. Once saved, should redirect to dashboard.
   handleSubmit = (e) => {
     e.preventDefault()
-    console.log(this.state)
     fetch(`http://localhost:3000/journal_entry`, {
       method: 'POST',
       headers: {
@@ -31,6 +31,10 @@ class JournalEntry extends React.Component {
       entry: ''
     })
   }
+
+  // To Do: add function to randomly show inspirational quote in empty textarea.
+
+
   render() {  
     
     const today = new Date();
