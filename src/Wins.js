@@ -5,7 +5,10 @@ function DashboardContainer() {
       <React.Fragment>
         <h1 className="title">Wins</h1>
         <div className="container">
-            <p> This is where the dashboard will go</p>
+            <p className='small-description'>Use this space to share any wins from yesterday</p>
+            <form> 
+              <input type='text'/> <button> + </button>
+            </form>
         </div>
       </React.Fragment>
     );
