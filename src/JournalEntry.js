@@ -33,10 +33,10 @@ class JournalEntry extends React.Component {
         <div>
           <h1 className="title">{`${moment(today).format('ll')} Journal`}</h1>
           <div className="container">
-              <form onSubmit={this.handleSubmit}>
+              <form onSubmit={this.handleSubmit} id='entry-form'>
                 <label name='entry'/>
                 <textarea id='entry-input' name='entry' value={this.state.entry} onChange={this.handleChange} placeholder="What are your wildest dreams?"/><br />
-                <button type="submit" value="Submit">Submit</button>
+                <button type="submit" value="Submit">Save</button>
                 <button type="reset">Clear</button>
               </form>
           </div>
