@@ -5,47 +5,54 @@ class Mood extends React.Component {
     
     state = {
         user_id: 1, 
-        feeling: ''
+        score: ''
     }
     
-    updateMood = (e) => {
+    addMood = (e) => {
         this.setState({
-            feeling: e.currentTarget.value
+            score: e.currentTarget.value
         })
-
+        fetch(`http://localhost:3000/feeling`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            },
+            body: JSON.stringify(this.state)
+        })
     }
     
     render() {
         return (
             <React.Fragment>
-            <h1 className="title">Today I feel {this.state.feeling} </h1>
+            <h1 className="title">Today I feel {this.state.score} </h1>
                 <div className="container">
                     
-                    <button onClick={this.updateMood}
+                    <button onClick={this.addMood}
                         value='ecstatic'
                         className='mood-icon'>
-                        < FaGrinBeam size={50} color={this.state.feeling === 'ecstatic' ? 'pink' : 'grey'}/>
+                        < FaGrinBeam size={50} color={this.state.score === 'ecstatic' ? 'pink' : 'grey'}/>
                     </button>
 
-                    <button onClick={this.updateMood}
+                    <button onClick={this.addMood}
                         value='happy'
                         className='mood-icon'>
-                        < FaSmile size={50} color={this.state.feeling === 'happy' ? 'pink' : 'grey'}/>
+                        < FaSmile size={50} color={this.state.score === 'happy' ? 'pink' : 'grey'}/>
                     </button>
-                    <button onClick={this.updateMood}
+                    <button onClick={this.addMood}
                         value='neutral'
                         className='mood-icon'>
-                        < FaMeh  size={50} color={this.state.feeling === 'neutral' ? 'pink' : 'grey'}/>
+                        < FaMeh  size={50} color={this.state.score === 'neutral' ? 'pink' : 'grey'}/>
                     </button>
-                    <button onClick={this.updateMood}
+                    <button onClick={this.addMood}
                         value='sad'
                         className='mood-icon'>
-                        < FaFrown size={50} color={this.state.feeling === 'sad' ? 'pink' : 'grey'}/>
+                        < FaFrown size={50} color={this.state.score === 'sad' ? 'pink' : 'grey'}/>
                     </button>
-                    <button onClick={this.updateMood}
+                    <button onClick={this.addMood}
                         value='despondent'
                         className='mood-icon'>
-                        < FaFrownOpen size={50} color={this.state.feeling === 'despondent' ? 'pink' : 'grey'}/>
+                        < FaFrownOpen size={50} color={this.state.score === 'despondent' ? 'pink' : 'grey'}/>
                     </button>
                 </div>
             </React.Fragment>
