@@ -62,7 +62,7 @@ class JournalEntry extends React.Component {
 
   // show the edit form
   editPost = () => {
-    this.setState({editToggle: true})
+    this.setState({editToggle: true, saved: false})
   }
 
   // send a patch request to update the entry data on the backend.
@@ -119,13 +119,13 @@ class JournalEntry extends React.Component {
         <button type="reset" onClick={this.clear}>Clear</button> 
       </form>
 
-    console.log(this.state)
-    console.log(this.state.edit_toggle)
       return (
           <div>
             <h1 className="title">{`${moment(today).format('ll')} Journal`}</h1>
             <div className="container">
-
+                {this.state.edit_toggle === true ? editForm : 
+                this.state.saved ? showEntry :
+                editForm } 
             </div>
           </div> 
       );
