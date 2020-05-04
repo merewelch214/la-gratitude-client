@@ -1,9 +1,18 @@
 import React from 'react';
+import UserSnapshot from './UserSnapshot'
+import Calendar from './Calendar'
+import SentimentContainer from './SentimentContainer'
 
 function DashboardContainer() {
     return (
       <div className="dashboard">
-          <p> This is where the dashboard will go</p>
+          <div className="left-side">
+            <UserSnapshot />
+            <Calendar />
+          </div>
+          <div className="right-side">
+            <SentimentContainer />
+          </div>
       </div>
     );
   }

@@ -1,5 +1,4 @@
 import React from 'react';
-import Header from './Header';
 import JournalContainer from './JournalContainer';
 import DashboardContainer from './DashboardContainer'
 // import SettingsContainer from './SettingsContainer'
