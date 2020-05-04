@@ -4,28 +4,65 @@ class DashboardContainer extends React.Component {
   
   state = {
     user_id: 1,
-    wins: ['']
+    wins: [],
+    new_win: ''
   }
 
   componentDidMount() {
-    // get the wins already submitted for today
+    fetch(`http://localhost:3000/wins`)
+    .then(resp=>resp.json())
+    .then(wins=>this.setState({wins}))
   }
 
-  addRow = () => {
-    // add fetch here, adding each row should send fetch request to add the wins to the backend
-    // after the button clicked the plus sign should turn into an x to delete or a edit button
+  addWin = (e) => {
+    e.preventDefault()
+    fetch(`http://localhost:3000/win`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      },
+      body: JSON.stringify({title: this.state.new_win, user_id: this.state.user_id})
+    })
+    .then(resp=>resp.json())
+    .then(win=>this.setState((prevState) => ({
+      wins: [...prevState.wins, win]
+    }))) 
+    this.setState({new_win: ''})
+  }
 
+  handleChange = (e) => {
+    e.preventDefault()
+    this.setState({new_win: e.target.value})
+  }
+
+  handleDelete = (e, id) => {
+    e.preventDefault()
+    fetch(`http://localhost:3000/win/${id}`, {
+      method: 'DELETE'})
+    let wins = this.state.wins.filter(win => win.id !== id)
+    this.setState({wins})
   }
   
   render() {
+    let { wins } = this.state
     return (
       <React.Fragment>
         <h1 className="title">Wins</h1>
         <div className="container small">
             <p className='small-description'>Use this space to share your wins from yesterday</p>
             <form> 
-              <input type='text' className='new-item'/> <button className='add' onClick={this.addRow}> + </button>
-            </form>
+                {wins.map(win => 
+                      <div key={win.id}>
+                        <input readOnly type='text'
+                          value={win.title} 
+                          className='new-item'/>
+                        <button className='add' onClick={e => this.handleDelete(e, win.id)}> x </button>
+                      </div>
+                    )  
+                  }
+                <input type='text' className='new-item' onChange={this.handleChange} value={this.state.new_win}/> <button className='add' onClick={this.addWin}> + </button>
+              </form>
         </div>
       </React.Fragment>
     );
