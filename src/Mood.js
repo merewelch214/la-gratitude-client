@@ -8,6 +8,13 @@ class Mood extends React.Component {
         score: ''
     }
     
+    componentDidMount() {
+        fetch(`http://localhost:3000/feeling`)
+        .then(resp=>resp.json())
+        .then(data=> this.setState({score: data.score})
+        )
+    }
+    
     addMood = (e) => {
         this.setState({
             score: e.currentTarget.value

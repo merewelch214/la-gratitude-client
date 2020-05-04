@@ -1,9 +1,11 @@
 import React from 'react';
+import Header from './Header'
 
 function SignUp() {
     return (
         <div>
-            This is where the sign up page will go
+            <Header />
+            <p>This is where the sign up page will go</p>
         </div>
     );
   }
