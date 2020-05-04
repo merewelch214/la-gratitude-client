@@ -65,6 +65,7 @@ nav ul li {
   padding: 20px;
   font-size: 16px;
   font-family: 'Oxygen-Light';
+  color: black;
 }
 
 .journal {
@@ -158,3 +159,14 @@ button {
   border: solid black 1px;
   margin: 5px;
 }
+
+a:link {
+  text-decoration: none;
+  color: black;
+}
+
+a:visited {
+  text-decoration: none;
+  color: black;
+}
+
