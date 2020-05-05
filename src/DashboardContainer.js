@@ -1,6 +1,6 @@
 import React from 'react';
 import UserSnapshot from './UserSnapshot'
-import Calendar from './Calendar'
+import JournalCalendar from './JournalCalendar'
 import SentimentContainer from './SentimentContainer'
 
 function DashboardContainer() {
@@ -8,7 +8,7 @@ function DashboardContainer() {
       <div className="journal">
           <div className="left-side">
             <UserSnapshot />
-            <Calendar />
+            <JournalCalendar />
           </div>
           <div className="right-side">
             <SentimentContainer />
