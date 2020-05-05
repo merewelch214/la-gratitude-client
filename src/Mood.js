@@ -11,8 +11,7 @@ class Mood extends React.Component {
     componentDidMount() {
         fetch(`http://localhost:3000/feeling`)
         .then(resp=>resp.json())
-        .then(data=> this.setState({score: data.score})
-        )
+        .then(data=> this.setState({score: data.score}))
     }
     
     addMood = (e) => {

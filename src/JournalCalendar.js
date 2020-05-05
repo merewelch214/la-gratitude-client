@@ -6,16 +6,17 @@ class JournalCalendar extends React.Component {
     
     state = {
         date: new Date(),
-        journal_dates: []
+        journal_dates: [],
+        user_id: 1,
       }
 
     // To Do: Get an array of days that had a journal entry.
-    // componentDidMount() {
-    //     fetch(`http://localhost:3000/`)
-    //      .then(resp=>resp.json())
-    //      .then(data=>this.setState(journal_dates: data))
-    // }
-    
+    componentDidMount() {
+        fetch(`http://localhost:3000/get_journal_dates/${this.state.user_id}`)
+         .then(resp=>resp.json())
+         .then(data=>console.log(data))
+    }
+
     onChange = date => this.setState({ date })
 
     render() {
@@ -26,7 +27,7 @@ class JournalCalendar extends React.Component {
                     <Calendar
                         maxDate={this.state.date}
                         minData={null} //set this to the first month a user has journalled
-                        tileContent={null} // use this prop to change the styling of tile if the date is in state.
+                        tileContent={({ date, view }) => view === 'month' && date.getDay() === 0 ? <p>Sunday</p> : null} // use this prop to change the styling of tile if the date is in state.
                         calendarType='US'
                         onChange={this.onChange}
                         value={this.state.date}/>    
