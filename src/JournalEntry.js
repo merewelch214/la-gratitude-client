@@ -88,9 +88,13 @@ class JournalEntry extends React.Component {
       entry: '',
       id: ''
     })
-}
+  }
 
   // To Do: add function to randomly show inspirational quote in empty textarea.
+  // getInspiration = () => {
+  //   https://www.success.com/17-motivational-quotes-to-inspire-you-to-be-successful/
+  // }
+
 
   render() {  
     
