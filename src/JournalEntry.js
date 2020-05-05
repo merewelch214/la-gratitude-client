@@ -96,13 +96,13 @@ class JournalEntry extends React.Component {
     
     const today = new Date();
 
-    const entryForm = 
-      <form onSubmit={this.handleSubmit} id='entry-form'>
-        <label name='entry'/>
-        <textarea id='entry-input' name='entry' value={this.state.entry} onChange={this.handleChange} placeholder="What are your wildest dreams?"/><br />
-        <button type="submit" value="Submit">Save</button>
-        <button type="reset" onClick={this.clear}>Clear</button> 
-      </form>
+    // const entryForm = 
+    //   <form onSubmit={this.handleSubmit} id='entry-form'>
+    //     <label name='entry'/>
+    //     <textarea id='entry-input' name='entry' value={this.state.entry} onChange={this.handleChange} placeholder="What are your wildest dreams?"/><br />
+    //     <button type="submit" value="Submit">Save</button>
+    //     <button type="reset" onClick={this.clear}>Clear</button> 
+    //   </form>
 
     const showEntry =
       <div>

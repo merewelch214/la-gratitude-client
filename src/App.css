@@ -1,6 +1,6 @@
 body {
   margin: 0;
-  font-family: 'Roboto', sans-serif
+  font-family: 'Roboto', sans-serif;
 }
 
 @font-face {
@@ -92,6 +92,13 @@ nav ul li {
   flex-direction: row;
 }
 
+.columns {
+  flex-direction: column;
+  align-items: center;
+}
+
+
+
 .small {
   flex-direction: column;
 }
@@ -170,3 +177,30 @@ a:visited {
   color: black;
 }
 
+#user-icon {
+  align-content: center;
+}
+
+.user-img {
+  align-content: center;
+  border-radius: 50%;
+  height: 150px;
+  width: 150px;
+}
+
+.flex-d-row {
+  display: flex;
+  flex-direction: row;
+}
+
+.user-details {
+  flex: 1;
+  padding: 15px;
+  margin-right: 10px;
+
+}
+
+.user-history {
+  text-align: center;
+  font-size: 14px;
+}

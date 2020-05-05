@@ -5,7 +5,7 @@ import SentimentContainer from './SentimentContainer'
 
 function DashboardContainer() {
     return (
-      <div className="dashboard">
+      <div className="journal">
           <div className="left-side">
             <UserSnapshot />
             <Calendar />
