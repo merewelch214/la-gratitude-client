@@ -1,5 +1,9 @@
 import React from 'react';
 import moment from 'moment';
+import Sentiment from 'sentiment';
+const sentiment = new Sentiment();
+
+
 class JournalEntry extends React.Component {
   
   state = {
@@ -44,6 +48,8 @@ class JournalEntry extends React.Component {
       id: data.id,
       saved: true
     }))
+    const result = sentiment.analyze(this.state.entry);
+    console.log(result)
   }
 
   // controlled form: setting the state with new values from the form
@@ -60,9 +66,15 @@ class JournalEntry extends React.Component {
     })
   }
 
+  cancel = () => {
+    this.setState({
+      edit_toggle: false
+    })
+  }
+
   // show the edit form
   editPost = () => {
-    this.setState({editToggle: true, saved: false})
+    this.setState({edit_toggle: true, saved: false})
   }
 
   // send a patch request to update the entry data on the backend.
@@ -100,13 +112,13 @@ class JournalEntry extends React.Component {
     
     const today = new Date();
 
-    // const entryForm = 
-    //   <form onSubmit={this.handleSubmit} id='entry-form'>
-    //     <label name='entry'/>
-    //     <textarea id='entry-input' name='entry' value={this.state.entry} onChange={this.handleChange} placeholder="What are your wildest dreams?"/><br />
-    //     <button type="submit" value="Submit">Save</button>
-    //     <button type="reset" onClick={this.clear}>Clear</button> 
-    //   </form>
+    const entryForm = 
+      <form onSubmit={this.handleSubmit} id='entry-form'>
+        <label name='entry'/>
+        <textarea id='entry-input' name='entry' value={this.state.entry} onChange={this.handleChange} placeholder="What are your wildest dreams?"/><br />
+        <button type="submit" value="Submit">Save</button>
+        <button type="reset" onClick={this.clear}>Clear</button> 
+      </form>
 
     const showEntry =
       <div>
@@ -121,6 +133,7 @@ class JournalEntry extends React.Component {
         <textarea id='entry-input' name='entry' value={this.state.entry} onChange={this.handleChange} placeholder="What are your wildest dreams?"/><br />
         <button type="submit" value="Submit">Save</button>
         <button type="reset" onClick={this.clear}>Clear</button> 
+        <button type="cancel" onClick={this.cancel}>Cancel</button>
       </form>
 
       return (
@@ -129,7 +142,7 @@ class JournalEntry extends React.Component {
             <div className="container">
                 {this.state.edit_toggle === true ? editForm : 
                 this.state.saved ? showEntry :
-                editForm } 
+                entryForm } 
             </div>
           </div> 
       );
