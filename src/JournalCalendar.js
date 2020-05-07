@@ -21,14 +21,13 @@ class JournalCalendar extends React.Component {
     onChange = date => this.setState({ date })
 
     render() {
-        console.log(this.state)
         return (
             <React.Fragment>
             <h1 className="title"> Calendar </h1>
                 <div className="container columns">
                     <Calendar
-                        maxDate={this.state.date}
-                        minData={null} //set this to the first month a user has journalled
+                        maxDate={new Date()}
+                        minData={null} 
                         tileContent={({ date, view }) => view === 'month' && this.state.journal_dates.includes(date) ? <p>*</p> : null} // use this prop to change the styling of tile if the date is in state.
                         calendarType='US'
                         onChange={this.onChange}

@@ -17,7 +17,7 @@ class Mood extends React.Component {
     addMood = (e) => {
         this.setState({
             score: e.currentTarget.value
-        })
+        }, () => {
         fetch(`http://localhost:3000/feeling`, {
             method: 'POST',
             headers: {
@@ -26,7 +26,7 @@ class Mood extends React.Component {
             },
             body: JSON.stringify(this.state)
         })
-    }
+    })}
     
     render() {
         return (

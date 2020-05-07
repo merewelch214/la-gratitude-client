@@ -132,7 +132,7 @@ textarea {
 }
 
 button {
-  border: black 3px solid;
+  border: black 1px solid;
   font-family: 'Oxygen-Light';
   padding: 5px;
   text-align: center;
@@ -207,4 +207,10 @@ a:visited {
 
 .streak {
   margin-top: 10px;
+}
+
+input {
+  font-family: 'Oxygen-Light';
+  padding-left: 5px;
+  color: black;
 }

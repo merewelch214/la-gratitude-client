@@ -11,7 +11,11 @@ class JournalEntry extends React.Component {
     user_id: 1,
     edit_toggle: false,
     id: '',
-    saved: false
+    saved: false,
+    score: 0,
+    comparative: 0,
+    negative: [],
+    positive: []
   }
 
   // componentDidMount: return today's journal entry if it exists. if not, return an empty string and show the form. 
@@ -21,7 +25,9 @@ class JournalEntry extends React.Component {
     .then(data =>  
       this.setState({ 
         entry: data.entry,
-        id: data.id
+        id: data.id,
+        score: data.score,
+        saved: true
       })  
     )
   }
@@ -32,24 +38,28 @@ class JournalEntry extends React.Component {
   // need to send the date as a parameter to the fetch request.
 
   // save journal entry to user data
-  // TO DO: Once saved, should redirect to dashboard.
+  // TO DO: Once saved, should redirect to dashboard page.
   handleSubmit = (e) => {
-    e.preventDefault()
+    e.preventDefault();
+    const result = sentiment.analyze(this.state.entry);
     fetch(`http://localhost:3000/journal_entry`, {
       method: 'POST',
       headers: {
         'Accept': 'application/json',
         'Content-type': 'application/json'
       },
-      body: JSON.stringify({user_id: this.state.user_id, entry: this.state.entry})
+      body: JSON.stringify({user_id: this.state.user_id, entry: this.state.entry, score: result.score, comparative: result.comparative, positive: result.positive, negative: result.negative})
     })
     .then(resp=> resp.json())
     .then(data=> this.setState({
       id: data.id,
-      saved: true
+      saved: true,
+      edit_toggle: false,
+      score: result.score,
+      comparative: result.comparative,
+      positive: result.positive,
+      negative: result.negative
     }))
-    const result = sentiment.analyze(this.state.entry);
-    console.log(result)
   }
 
   // controlled form: setting the state with new values from the form
@@ -68,7 +78,8 @@ class JournalEntry extends React.Component {
 
   cancel = () => {
     this.setState({
-      edit_toggle: false
+      edit_toggle: false,
+      saved: true
     })
   }
 
@@ -78,16 +89,23 @@ class JournalEntry extends React.Component {
   }
 
   // send a patch request to update the entry data on the backend.
-  handleEdit = () => {
+  handleEdit = (e) => {
+    e.preventDefault();
+    const result = sentiment.analyze(this.state.entry);
     fetch(`http://localhost:3000/journal_entry/${this.state.id}`, {
       method: 'PATCH',
       headers: {
         'Content-Type': 'application/json',
         'Accept': 'application/json'
       },
-      body: JSON.stringify({entry: this.state.entry})
+      body: JSON.stringify({user_id: this.state.user_id, entry: this.state.entry, score: result.score, comparative: result.comparative, positive: result.positive, negative: result.negative})
     })
-    this.setState({editToggle: false, saved: true})
+    this.setState({
+      edit_toggle: false, 
+      saved: true,
+      comparative: result.comparative,
+      positive: result.positive,
+      negative: result.negative})
   }
 
   // delete fetch request. reset state.
@@ -98,7 +116,8 @@ class JournalEntry extends React.Component {
     
     this.setState({
       entry: '',
-      id: ''
+      id: '',
+      score: ''
     })
   }
 
@@ -109,7 +128,7 @@ class JournalEntry extends React.Component {
 
 
   render() {  
-    
+    console.log(this.state)
     const today = new Date();
 
     const entryForm = 
