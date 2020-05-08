@@ -26,10 +26,12 @@ class JournalEntry extends React.Component {
       this.setState({ 
         entry: data.entry,
         id: data.id,
-        score: data.score,
-        saved: true
+        score: data.score
       })  
     )
+    if (!this.state.entry) {
+      this.setState({saved: false})
+    } else {this.setState({saved: true})}
   }
 
   //TO DO:
@@ -128,7 +130,6 @@ class JournalEntry extends React.Component {
 
 
   render() {  
-    console.log(this.state)
     const today = new Date();
 
     const entryForm = 

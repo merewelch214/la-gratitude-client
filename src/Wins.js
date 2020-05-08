@@ -1,4 +1,5 @@
 import React from 'react';
+import { FaPlusCircle, FaMinusCircle } from 'react-icons/fa';
 
 class DashboardContainer extends React.Component {
   
@@ -52,16 +53,16 @@ class DashboardContainer extends React.Component {
         <div className="container small">
             <p className='small-description'>Use this space to share your wins from yesterday</p>
             <form> 
-                {wins.map(win => 
+                {this.state.wins && wins.map(win => 
                       <div key={win.id}>
                         <input readOnly type='text'
                           value={win.title} 
                           className='new-item'/>
-                        <button className='add' onClick={e => this.handleDelete(e, win.id)}> x </button>
+                        <button className='add' onClick={e => this.handleDelete(e, win.id)}><FaMinusCircle/></button>
                       </div>
                     )  
                   }
-                <input type='text' className='new-item' onChange={this.handleChange} value={this.state.new_win}/> <button className='add' onClick={this.addWin}> + </button>
+                <input type='text' className='new-item' onChange={this.handleChange} value={this.state.new_win}/> <button className='add' onClick={this.addWin}><FaPlusCircle/></button>
               </form>
         </div>
       </React.Fragment>

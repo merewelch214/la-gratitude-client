@@ -1,4 +1,8 @@
 import React from 'react';
+import { FaPlusCircle, FaMinusCircle } from 'react-icons/fa';
+
+
+
 
 class Goals extends React.Component {
   
@@ -57,11 +61,11 @@ class Goals extends React.Component {
                         <input readOnly type='text'
                           value={goal.title} 
                           className='new-item'/>
-                        <button className='add' onClick={e => this.handleDelete(e, goal.id)}> x </button>
+                        <button className='add' onClick={e => this.handleDelete(e, goal.id)}><FaMinusCircle /></button>
                       </div>
                     )  
                   }
-                <input type='text' className='new-item' onChange={this.handleChange} value={this.state.new_goal}/> <button className='add' onClick={this.addGoal}> + </button>
+                <input type='text' className='new-item' onChange={this.handleChange} value={this.state.new_goal}/> <button className='add' onClick={this.addGoal}><FaPlusCircle/></button>
               </form>
           </div>
         </React.Fragment>
