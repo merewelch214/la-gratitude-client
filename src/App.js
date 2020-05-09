@@ -35,13 +35,13 @@ class App extends React.Component {
     return (
         <div className="App">
           <div className='main-container'>
-          < Header  showDashboard={this.showDashboard} showJournal={this.showJournal} />
+          < Header  showDashboard={this.showDashboard} showJournal={this.showJournal} showSettings={this.showSettings} currentUser={this.state.currentUser}/>
           <Switch>
               <Route path='/signup' render={() => <SignUp />}/>
               <Route path='/login' render={() => <Login />}/>
-              <Route path='/journal' render={() => <MainContainer currentView={this.state.currentView} />} />
-              <Route path='/dashboard' render= {() => <MainContainer currentView={this.state.currentView} />} />
-              <Route path='/' render={() =>  <MainContainer currentView={this.state.currentView} />} />  
+              <Route path='/journal' render={() => <MainContainer currentView={this.state.currentView} currentUser={this.state.currentUser}/>} />
+              <Route path='/dashboard' render= {() => <MainContainer currentView={this.state.currentView} currentUser={this.state.currentUser}/>} />
+              <Route path='/' render={() =>  <MainContainer currentView={this.state.currentView} currentUser={this.state.currentUser}/>} />  
             </Switch >
           </div>
         </div>
