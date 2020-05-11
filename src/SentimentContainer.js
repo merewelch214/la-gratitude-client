@@ -13,15 +13,39 @@ class JournalEntry extends React.Component {
     .then(data=>this.setState({journal_data: data}))
   }
 
+  getDates = () => {
+    let datesArray = []
+    for (let x = 30; x >= 0 ; x--) {
+      let date = new Date(); 
+      date.setDate(date.getDate() - x);
+      let month = date.getMonth() + 1;
+      let day = date.getDate()
+      datesArray.push(`${month}-${day}`)
+    }
+    return datesArray
+  }
+
   render() {  
     // const month_names_short = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
     
     const data = {
-      labels: [new Date("2015-3-15 13:3").toLocaleString(), new Date("2015-3-25 13:2").toLocaleString(), new Date("2015-4-25 14:12").toLocaleString()], 
+      labels: this.getDates(), 
       options: {
         scales: {
           xAxes: [{
-            type: 'time'
+            type: 'time',
+            display: true,
+            scaleLabel: {
+              display: true,
+              labelString: 'Date'
+            }
+          }],
+          yAxes: [{
+            ticks: {
+              beginAtZero: true,
+            },
+            display: true,
+            labelString: 'Sentiment Score'
           }]
         }
       },
@@ -60,7 +84,6 @@ class JournalEntry extends React.Component {
       ]
     }
     
-    console.log(this.state)
     return (
           <div>
             <h1 className="title">Your sentiment over time</h1>
