@@ -1,5 +1,6 @@
 import React from 'react';
 import {Line} from 'react-chartjs-2';
+import moment from 'moment';
 
 class JournalEntry extends React.Component {
 
@@ -19,10 +20,11 @@ class JournalEntry extends React.Component {
     let datesArray = [];
     for (let x = 30; x >= 0 ; x--) {
       let date = new Date(); 
-      date.setDate(date.getDate() - x);
-      let month = date.getMonth() + 1;
-      let day = date.getDate()
-      datesArray.push(`${month}-${day}`)
+      // date.setDate(date.getDate() - x);
+      // let month = date.getMonth() + 1;
+      // let day = date.getDate()
+      // datesArray.push(`${month}-${day}`)
+      datesArray.push(date.setDate(date.getDate() - x))
     }
     return datesArray;
   }
@@ -34,13 +36,13 @@ class JournalEntry extends React.Component {
       for (let i = 0; i < array.length; i++) {
         let obj = {}; 
         let time = new Date(array[i][0])
-        let month = time.getMonth()+1
-        let day = time.getDate()
-        obj['t'] = `${month}-${day}`;
+        // let month = time.getMonth()+1
+        // let day = time.getDate()
+        // obj['t'] = `${month}-${day}`;
+        obj['t'] = moment(time).format('MMM DD');
         obj['y'] = array[i][1];
         final_array.push(obj);
       }
-      console.log(final_array)
     return final_array;
     }
   }
@@ -55,10 +57,19 @@ class JournalEntry extends React.Component {
         scales: {
           xAxes: [{
             type: 'time',
+            distribution: 'linear',
+            time: {
+              unit: 'day',
+              unitStepSize: 1,
+              format: {
+                'day': 'MMM DD',
+                tooltipFormat: 'll'
+              }
+            },
             display: true,
             scaleLabel: {
               display: true,
-              labelString: 'Date'
+              labelString: 'Date'             
             }
           }],
           yAxes: [{
@@ -72,7 +83,7 @@ class JournalEntry extends React.Component {
       },
       datasets: [
         {
-          label: 'sentiment',
+          label: 'Sentiment',
           fill: false,
           lineTension: 0.1,
           backgroundColor: 'rgba(75,192,192,0.4)',
