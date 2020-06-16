@@ -1,7 +1,8 @@
 import React from 'react';
 import UserSnapshot from './UserSnapshot'
 import JournalCalendar from './JournalCalendar'
-import SentimentContainer from './SentimentContainer'
+import BlurbsContainer from './BlurbsContainer'
+// import SentimentContainer from './SentimentContainer'
 
 function DashboardContainer() {
     return (
@@ -11,7 +12,8 @@ function DashboardContainer() {
             <JournalCalendar />
           </div>
           <div className="right-side">
-            <SentimentContainer />
+            < BlurbsContainer />
+            {/* <SentimentContainer /> */}
           </div>
       </div>
     );
