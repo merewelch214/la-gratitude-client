@@ -52,32 +52,33 @@ class JournalEntry extends React.Component {
     
     // data inputs for chart 
     const data = {
-      labels: this.getDates(), 
+      labels: [new Date('2020', '04', '20'),new Date('2020', '05', '03'),new Date('2020', '05', '04'), new Date()],
+      // labels: this.getDates(), 
       options: {
         scales: {
           xAxes: [{
             type: 'time',
             distribution: 'linear',
             time: {
-              unit: 'day',
-              unitStepSize: 1,
-              format: {
-                'day': 'MMM DD',
-                tooltipFormat: 'll'
-              }
-            },
+            //   parser: 'MMM DD',
+            //   unit: 'day',
+            //   unitStepSize: 1,
+            //   min: moment().subtract(30, 'days'),
+            //   max: moment(),
+            //   displayFormats: {
+            //      'day': 'MMM DD'
+            // },
             display: true,
             scaleLabel: {
               display: true,
               labelString: 'Date'             
-            }
+            }}
           }],
           yAxes: [{
-            ticks: {
-              beginAtZero: true,
-            },
-            display: true,
-            labelString: 'Sentiment Score'
+            scaleLabel: {
+              display: true,
+              labelString: 'Sentiment Score'
+            }
           }]
         }
       },
@@ -101,7 +102,19 @@ class JournalEntry extends React.Component {
           pointHoverBorderWidth: 2,
           pointRadius: 1,
           pointHitRadius: 10,
-          data: this.state.isLoaded && this.getData(this.state.journal_data)
+          data: [{ 
+            t: new Date('2020', '04', '20'),
+            y: 1
+          }, {
+            t: new Date('2020', '05', '03'),
+            y: 10
+          }, {
+            t: new Date('2020', '05', '04'),
+            y: 4
+          }, {
+            t: new Date('2020','01', '20')
+          }]
+          // data: this.state.isLoaded && this.getData(this.state.journal_data)
         }
       ]
     }

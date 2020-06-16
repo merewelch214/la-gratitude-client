@@ -215,3 +215,13 @@ input {
   padding-left: 5px;
   color: black;
 }
+
+.active {
+  color: #1affa3;
+}
+
+.disabled {
+  color: black;
+  pointer-events: none; 
+  cursor: default;
+}
