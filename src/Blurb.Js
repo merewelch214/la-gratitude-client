@@ -1,15 +1,15 @@
 import React from 'react';
 
-
-class Blurb extends React.Component() {
-    render() {
-        return (
+function Blurb(props) {
+    return (
+        <div className='blurb-container'>
             <div> 
-                Created on: {this.props.date}
-                Score: {this.props.score}
-            </div>
-        )
-    }
+                Score: {props.score} 
+            </div><br />
+            Entry: {props.entry} <br />
+            Date: {props.createdAt}
+        </div>
+    )
 }
 
 export default Blurb;

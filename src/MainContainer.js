@@ -4,8 +4,6 @@ import DashboardContainer from './DashboardContainer'
 // import SettingsContainer from './SettingsContainer'
 class MainContainer extends React.Component {
     
-
-    
     render() {
         return (
             <div className='body-container'>
