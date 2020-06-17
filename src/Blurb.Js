@@ -2,12 +2,14 @@ import React from 'react';
 
 function Blurb(props) {
     return (
-        <div className='blurb-container'>
-            <div> 
-                Score: {props.score} 
-            </div><br />
-            Entry: {props.entry} <br />
-            Date: {props.createdAt}
+        <div className='container'>
+                <div className='score-container'> 
+                    {props.score} 
+                </div>
+                <div className='entry-container'>
+                    {props.entry} <br />
+                    Created on: {props.created_at}
+                </div>
         </div>
     )
 }

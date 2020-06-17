@@ -225,3 +225,19 @@ input {
   pointer-events: none; 
   cursor: default;
 }
+
+.blurb {
+  size: 16px;
+
+}
+
+.score-container {
+  margin: 5px;
+  font-size: 30px;
+  font-weight: bold;
+  flex: 1
+}
+
+.entry-container {
+  flex: 8
+}
