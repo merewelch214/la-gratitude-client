@@ -15,6 +15,7 @@
     "react-charts": "^2.0.0-beta.6",
     "react-dom": "^16.13.1",
     "react-icons": "^3.10.0",
+    "react-infinite-scroll-component": "^5.0.5",
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.4.1",
     "sentiment": "^5.0.2",
