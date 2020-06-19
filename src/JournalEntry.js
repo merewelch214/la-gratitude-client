@@ -29,9 +29,9 @@ class JournalEntry extends React.Component {
         score: data.score
       })  
     )
-    if (!this.state.entry) {
-      this.setState({saved: false})
-    } else {this.setState({saved: true})}
+    if (this.state.entry) {
+      this.setState({saved: true})
+    } else {this.setState({saved: false})}
   }
 
   //TO DO:
@@ -156,11 +156,13 @@ class JournalEntry extends React.Component {
         <button type="cancel" onClick={this.cancel}>Cancel</button>
       </form>
 
+      console.log('saved', this.state.saved)
+      console.log('edit', this.state.edit_toggle)
       return (
           <div>
             <h1 className="title">{`${moment(today).format('ll')} Journal`}</h1>
             <div className="container">
-                {this.state.edit_toggle === true ? editForm : 
+                {this.state.edit_toggle === true && !!this.state.id ? editForm : 
                 this.state.saved ? showEntry :
                 entryForm } 
             </div>

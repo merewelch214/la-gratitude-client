@@ -1,6 +1,6 @@
 import React from 'react';
 import Blurb from './Blurb';
-import InfiniteScroll from 'react-infinite-scroll-component';
+// import InfiniteScroll from 'react-infinite-scroll-component';
 
 class BlurbsContainer extends React.Component {
     
@@ -26,10 +26,12 @@ class BlurbsContainer extends React.Component {
 
     render() {
         const sorted_entries = [...this.state.journal_entries].sort((a,b)=>b.id-a.id)
-        console.log(sorted_entries)
         return (
             <div>
-                <InfiniteScroll
+                {sorted_entries.map(journal_entry => < Blurb {...journal_entry} key={journal_entry.id} /> )}
+
+                
+                {/* <InfiniteScroll
                     dataLength={this.state.journal_entries.length} //This is important field to render the next data
                     next={this.fetchMoreData}
                     hasMore={this.state.hasMore}
@@ -49,8 +51,8 @@ class BlurbsContainer extends React.Component {
                         <h3 style={{textAlign: 'center'}}>&#8593; Release to refresh</h3>
                     }>
                     {sorted_entries.map(journal_entry => < Blurb {...journal_entry} key={journal_entry.id} /> )}
-                </InfiniteScroll>
-                
+leen                </InfiniteScroll>
+                 */}
             </div>
         )
     }
