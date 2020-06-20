@@ -24,8 +24,10 @@ class JournalCalendar extends React.Component {
     // send fetch request to get info for the selected day's journal entry and show that journal entry. Add button to see all entries. 
     onChange = (date) => {
         this.setState({ date })
-        console.log(date)
-        //fetch()
+        const formatted_date = date.toISOString().slice(0,10)
+        fetch(`http://localhost:3000/user/${this.state.user_id}/journal_date/${formatted_date}`)
+        .then(resp=>resp.json()
+        .then(data=>console.log(data)))
     }
     
     // set the class name for all tiles. if there is a journal entry for that day, make link active. otherwise, disable click
