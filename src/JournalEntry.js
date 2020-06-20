@@ -156,8 +156,6 @@ class JournalEntry extends React.Component {
         <button type="cancel" onClick={this.cancel}>Cancel</button>
       </form>
 
-      console.log('saved', this.state.saved)
-      console.log('edit', this.state.edit_toggle)
       return (
           <div>
             <h1 className="title">{`${moment(today).format('ll')} Journal`}</h1>
