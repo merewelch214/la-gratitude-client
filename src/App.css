@@ -241,3 +241,8 @@ input {
 .entry-container {
   flex: 8
 }
+
+.prev-next-buttons {
+  flex: 1;
+  text-align: center;
+}
