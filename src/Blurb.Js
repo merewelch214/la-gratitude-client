@@ -6,9 +6,12 @@ function Blurb(props) {
                 <div className='score-container'> 
                     {props.score} 
                 </div>
+                <div>
+                    {props.created_at.slice(5,10)}-{props.created_at.slice(0,4)}
+                </div>< br />
                 <div className='entry-container'>
                     {props.entry} <br />
-                    Created on: {props.created_at}
+                    
                 </div>
         </div>
     )
