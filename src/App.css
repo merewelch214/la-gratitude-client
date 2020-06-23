@@ -235,7 +235,7 @@ input {
   margin: 5px;
   font-size: 30px;
   font-weight: bold;
-  flex: 1
+  flex: 1;
 }
 
 .entry-container {
